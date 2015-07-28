@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Francois-Xavier LAHITTE"]
   spec.email         = ["francoisxavier.lahitte@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Copy Meetup public event to a Google Calendar.}
+  spec.description   = %q{Allow to retreive a list of public event from a Meetup group and add these event to an authorized Google Calendar.}
+  spec.homepage      = "Local dev"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
@@ -28,6 +28,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.10"
+
+  spec.add_development_dependency "rmeetup"
+
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
 end

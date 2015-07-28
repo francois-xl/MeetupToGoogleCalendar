@@ -5,7 +5,7 @@ describe MeetupToGoogleCalendar do
     expect(MeetupToGoogleCalendar::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  it 'loads a website class' do
+    expect(MeetupToGoogleCalendar::TransfertControler).to be_a(Class)
   end
 end

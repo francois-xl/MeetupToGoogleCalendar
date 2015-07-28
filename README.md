@@ -21,8 +21,12 @@ Or install it yourself as:
     $ gem install MeetupToGoogleCalendar
 
 ## Usage
-
-TODO: Write usage instructions here
+transfert_controler = MeetupToGoogleCalendar::TransfertControler.new(meetup_group_url, api_key)
+TODO: google calendar arguments
+#Creates a Spydec object to use for competitive analysis
+transfert_controler#events			#Returns the list of public meetup event for the given meetup group
+TODO: add synchronize method
+transfert_controler#synchronize		#Add the event list to the given google calendar account
 
 ## Development
 
