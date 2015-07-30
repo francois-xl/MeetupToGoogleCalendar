@@ -46,7 +46,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Command-line
 
-After the gem installed with `bundle exec rake install`, you will be able to use the command-line application for this gem. The executable is located in the lib/exe directory.
+After the gem installed, you will be able to use the command-line application for this gem. The executable is located in the lib/exe directory.
 
 ### Usage
 
