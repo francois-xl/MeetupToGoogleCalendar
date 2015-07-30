@@ -1,4 +1,7 @@
 # MeetupToGoogleCalendar
+
+Retreive a list of public upcoming event from a Meetup group and add these events to an authorized Google Calendar. For this alpha version, there is a default limit of 10 events processed.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -26,10 +29,14 @@ Follow the step 1 described here : https://developers.google.com/google-apps/cal
 
 - Finaly, you will have to get the calendar ID you want to modify using this gem. You can find your calendar ID by following these steps : http://googleappstroubleshootinghelp.blogspot.co.uk/2012/09/how-to-find-calendar-id-of-google.html
 
-	transfert_controler = MeetupToGoogleCalendar::TransfertControler.new(meetup_group_urlname, api_key, calendar_id)
+```ruby
+transfert_controler = MeetupToGoogleCalendar::TransfertControler.new(meetup_group_urlname, api_key, calendar_id)
+```
 
+```ruby
 	transfert_controler#events			#Returns the list of public meetup event for the given meetup group
 	transfert_controler#synchronize		#Add the event list to the given google calendar account
+```
 
 ## Development
 
@@ -43,11 +50,13 @@ After the gem installed with `bundle exec rake install`, you will be able to use
 
 ### Usage
 
-	MeetupToGoogleCalendar [options] meetup_group_urlname meetup_api_key google_calendar_id
+    $ MeetupToGoogleCalendar [options] meetup_group_urlname meetup_api_key google_calendar_id
 
 * meetup_group_urlname : Name of the Meetup group as it appear in the URL to this group
 * meetup_api_key : Required key provided by Meetup to identify an user remotely using Meetup services
 * google_calendar_id : Required Google calendar ID provided by Google to use one specific user's calendar
+
+Use `MeetupToGoogleCalendar -h` to see other options
 
 ## Contributing
 
