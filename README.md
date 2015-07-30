@@ -60,7 +60,7 @@ Use `MeetupToGoogleCalendar -h` to see other options
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/MeetupToGoogleCalendar.
+Bug reports and pull requests are welcome on GitHub at https://github.com/francois-xl/MeetupToGoogleCalendar.
 
 
 ## License
