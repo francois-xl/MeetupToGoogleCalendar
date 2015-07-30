@@ -7,13 +7,19 @@ require 'fileutils'
 
 module GoogleCalendarApiWrapper
   class GoogleCalendarApiWrapper
-    def initialize(calendarId)
+    def initialize(calendarId, client_secrets_path = nil)
       @APPLICATION_NAME = 'MeetupToGoogleCalendar'
-      @CLIENT_SECRETS_PATH = File.join(Dir.home, 'client_secret.json')
       @CREDENTIALS_PATH = File.join(Dir.home, '.credentials',
                                "meetuptogooglecalendar.json")
       @SCOPE = 'https://www.googleapis.com/auth/calendar'
+
       @calendarId = calendarId
+      if client_secrets_path
+        @CLIENT_SECRETS_PATH = client_secrets_path
+      else
+        @CLIENT_SECRETS_PATH = File.join(Dir.home, 'client_secret.json')
+      end
+      puts "Client secret is here : #{@CLIENT_SECRETS_PATH}"
 
       # Initialize the API
       @client = Google::APIClient.new(:application_name => @APPLICATION_NAME)
@@ -68,6 +74,7 @@ module GoogleCalendarApiWrapper
       :body_object => event)
       event = results.data
       puts "Event created: #{event.htmlLink}"
+      event
     end
   end
 end

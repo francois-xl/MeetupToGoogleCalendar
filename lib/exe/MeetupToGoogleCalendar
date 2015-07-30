@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
+require 'optparse'
+require 'MeetupToGoogleCalendar'
+
+options = OpenStruct.new
+
+option_parser = OptionParser.new do |opts|
+  executable_name = File.basename($PROGRAM_NAME)
+  opts.banner = "Retreive a list of public upcoming event from a Meetup group and add these events to an authorized Google Calendar
+
+    Usage: #{executable_name} [options] meetup_group_urlname meetup_api_key google_calendar_id
+       - meetup_group_urlname : Name of the Meetup group as it appear in the URL to this group
+       - meetup_api_key : Required key provided by Meetup to identify an user remotely using Meetup services
+       - google_calendar_id : Required Google calendar ID provided by Google to use one specific user's calendar 
+     "
+  
+  opts.on('-s PATH', '--secrets PATH', String, 'Path to the client ID file provided by Google to access a calendar. This file is necessary until the access is granted by the user. If this option is not used, the default location to look for the file will be "~/client_secret.json"') do |path|
+    options.client_secrets_path = path
+  end
+
+  opts.on('-p N', '--page N', Integer, 'Limit how many event will be processed. The default limit is 10.') do |n|
+    options.limit = n
+  end
+
+  opts.on('-l', '--list-only', 'Only list the Meetup event without copying them to the google calendar') do
+    options.list_only = true
+  end
+
+end
+  
+begin
+  option_parser.parse!
+  rescue OptionParser::InvalidOption => error
+  puts "#{executable_name} doesn't recognize that #{ error }"
+  exit
+  rescue OptionParser::AmbiguousOption => error
+  puts "That's an #{ error}"
+  exit
+end
+
+if ARGV.empty?
+  puts "    Error: Parameters required"
+  puts option_parser.help
+else
+  meetup_group_urlname = ARGV[0]
+  meetup_api_key = ARGV[1]
+  google_calendar_id = ARGV[2]
+  client_secrets_path = options.client_secrets_path
+  limit = options.limit
+  
+  transfert_controler = MeetupToGoogleCalendar::TransfertControler.new(meetup_group_urlname, meetup_api_key, google_calendar_id, client_secrets_path)
+  if options.list_only
+    transfert_controler.events(limit)
+  else
+    transfert_controler.synchronize(limit)
+  end
+end

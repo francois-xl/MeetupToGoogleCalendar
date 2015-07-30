@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["francoisxavier.lahitte@gmail.com"]
 
   spec.summary       = %q{Copy Meetup public event to a Google Calendar.}
-  spec.description   = %q{Allow to retreive a list of public event from a Meetup group and add these event to an authorized Google Calendar.}
-  spec.homepage      = "Local dev"
+  spec.description   = %q{Retreive a list of public upcoming event from a Meetup group and add these events to an authorized Google Calendar.}
+  spec.homepage      = "http://localhost/"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
