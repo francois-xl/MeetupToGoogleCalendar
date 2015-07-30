@@ -4,8 +4,11 @@ module MeetupToGoogleCalendar
   describe TransfertControler do
     before do
       meetup_group_urlname = "GeekZoneLondon"
-      api_key = "457814a4b4336503971717b681f3f7b" #Private key, change it for your own usage
-      calendar_id =  "tr35eq66n1hlp8eg35avto1350@group.calendar.google.com" #Private calendar_id, change it for your own usage
+      api_key = "0" # Change it for your own usage
+      calendar_id =  "nothing@group.calendar.google.com" # Change it for your own usage
+      if api_key == "0"
+        puts "##### The Meetup API key and Calendar ID are not set. Edit the file 'spec/transfertcontroler_spec.rb' to define your own api key and calendar ID. For more information, check the README file. #####"
+      end
       @transfert_controler = MeetupToGoogleCalendar::TransfertControler.new(meetup_group_urlname, api_key, calendar_id)
     end
 
