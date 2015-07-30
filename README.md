@@ -33,7 +33,9 @@ http://www.meetup.com/GeekZoneLondon/
 - On Google Calendar, you will have to login and then register a new client ID, which will provide you with a client secret file that will be use to authenticate you using the gem. You can do this on this page : https://console.developers.google.com/project/static-welder-101600/apiui/credential
 Follow the step 1 described here : https://developers.google.com/google-apps/calendar/quickstart/ruby
 
-- Finaly, you will have to get the calendar ID you want to modify using this gem. You can find your calendar ID by following these steps : http://googleappstroubleshootinghelp.blogspot.co.uk/2012/09/how-to-find-calendar-id-of-google.html
+- On Google Calendar, you will have to get the calendar ID you want to modify using this gem. You can find your calendar ID by following these steps : http://googleappstroubleshootinghelp.blogspot.co.uk/2012/09/how-to-find-calendar-id-of-google.html
+
+- Finaly, when you will use the gem for the first time to access the Google calendar, you will be ask in a browser tab to authorize the use of the calendar. The server answer to this page with a SSL certificat and Ruby is not able to verify this certificat. You will need to follow these steps to teach it how to do : https://gist.github.com/fnichol/867550
 
 ```ruby
 transfert_controler = MeetupToGoogleCalendar::TransfertControler.new(meetup_group_urlname, api_key, calendar_id)
