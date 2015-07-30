@@ -1,4 +1,7 @@
 # MeetupToGoogleCalendar
+
+Retreive a list of public upcoming event from a Meetup group and add these events to an authorized Google Calendar. For this alpha version, there is a default limit of 10 events processed.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -17,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-To be able to use this gem (or its command-line version), you will need to setup some configuration in the Meetup APi and Google API.
+To be able to use this gem (or its command-line version), you will need to setup some configuration in the Meetup API and Google API.
+
+- The Meetup group URL name is the name of the group that appear in the URL of this group. For example :
+```ruby
+http://www.meetup.com/GeekZoneLondon/
+                      ^^^^^^^^^^^^^^
+```
 
 - On Meetup, you will need to login and generate an API key to authorize this gem to access the Meetup API. You can do this on this page : https://secure.meetup.com/meetup_api/key/
 
@@ -26,10 +35,14 @@ Follow the step 1 described here : https://developers.google.com/google-apps/cal
 
 - Finaly, you will have to get the calendar ID you want to modify using this gem. You can find your calendar ID by following these steps : http://googleappstroubleshootinghelp.blogspot.co.uk/2012/09/how-to-find-calendar-id-of-google.html
 
-	transfert_controler = MeetupToGoogleCalendar::TransfertControler.new(meetup_group_urlname, api_key, calendar_id)
+```ruby
+transfert_controler = MeetupToGoogleCalendar::TransfertControler.new(meetup_group_urlname, api_key, calendar_id)
+```
 
-	transfert_controler#events			#Returns the list of public meetup event for the given meetup group
+```ruby
+	transfert_controler#events		#Returns the list of public meetup event for the given meetup group
 	transfert_controler#synchronize		#Add the event list to the given google calendar account
+```
 
 ## Development
 
@@ -39,19 +52,21 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Command-line
 
-After the gem installed with `bundle exec rake install`, you will be able to use the command-line application for this gem. The executable is located in the lib/exe directory.
+After the gem installed, you will be able to use the command-line application for this gem. The executable is located in the lib/exe directory.
 
 ### Usage
 
-	MeetupToGoogleCalendar [options] meetup_group_urlname meetup_api_key google_calendar_id
+    $ MeetupToGoogleCalendar [options] meetup_group_urlname meetup_api_key google_calendar_id
 
 * meetup_group_urlname : Name of the Meetup group as it appear in the URL to this group
 * meetup_api_key : Required key provided by Meetup to identify an user remotely using Meetup services
 * google_calendar_id : Required Google calendar ID provided by Google to use one specific user's calendar
 
+Use `MeetupToGoogleCalendar -h` to see other options
+
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/MeetupToGoogleCalendar.
+Bug reports and pull requests are welcome on GitHub at https://github.com/francois-xl/MeetupToGoogleCalendar.
 
 
 ## License
