@@ -20,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-To be able to use this gem (or its command-line version), you will need to setup some configuration in the Meetup APi and Google API.
+To be able to use this gem (or its command-line version), you will need to setup some configuration in the Meetup API and Google API.
+
+- The Meetup group URL name is the name of the group that appear in the URL of this group. For example :
+```ruby
+http://www.meetup.com/GeekZoneLondon/
+                      ^^^^^^^^^^^^^^
+```
 
 - On Meetup, you will need to login and generate an API key to authorize this gem to access the Meetup API. You can do this on this page : https://secure.meetup.com/meetup_api/key/
 
@@ -34,7 +40,7 @@ transfert_controler = MeetupToGoogleCalendar::TransfertControler.new(meetup_grou
 ```
 
 ```ruby
-	transfert_controler#events			#Returns the list of public meetup event for the given meetup group
+	transfert_controler#events		#Returns the list of public meetup event for the given meetup group
 	transfert_controler#synchronize		#Add the event list to the given google calendar account
 ```
 
